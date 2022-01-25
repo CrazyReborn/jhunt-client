@@ -8,7 +8,7 @@ export default function SegmentOne () {
   const getStarted = () => {
     setBtnActive(!btnActive);
     if (typeof token !== undefined) {
-      navigate('/signup');
+      navigate('/signin');
     } else {
       navigate('/applications');
     }

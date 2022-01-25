@@ -12,15 +12,15 @@ export default function SignIn () {
     fetch(process.env.REACT_APP_API_SERVER + 'signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
+      credentials: 'include',
       body: JSON.stringify({ username, password })
     })
       .then(res => res.json())
       .then(json => {
         if (typeof json.err !== 'undefined') {
-          console.log(typeof json.err)
           setError(json.err.errors)
         } else {
-          navigate('/');
+          navigate('/dashboard/applications');
         }
       })
   }

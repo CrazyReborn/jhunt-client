@@ -1,7 +1,8 @@
 .mainContent {
   display: flex;
   flex-direction: row;
+  min-height: 100vh;
 }
 .outlet {
-  width: fit-content;
+  flex-grow: 1;
 }

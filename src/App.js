@@ -3,8 +3,6 @@ import { Routes, Route} from 'react-router-dom';
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import MainPage from "./components/MainPage";
-import Events from "./components/Events";
-import Navbar from "./components/Navbar";
 
 function App() {
   return (
