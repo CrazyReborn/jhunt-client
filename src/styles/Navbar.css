@@ -1,12 +1,13 @@
 nav {
   min-width: fit-content;
-  padding-top: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-bottom: 2rem;
   width: 15%;
   background-color: blue;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 }
 
 nav > ul {

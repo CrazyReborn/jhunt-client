@@ -1,18 +1,22 @@
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-
-export default function ApplicationGeneral (props) {
-  const application = props.application;
+export default function ApplicationGeneral(props) {
+  const { application } = props;
   const navigation = useNavigate();
 
   const showDetail = () => {
-    navigation(`${application._id}`)
-  }
+    navigation(`${application._id}`);
+  };
   return (
-    <div className='application'>
-      <h2>{application.position} at {application.company_name}</h2>
+    <div className="application">
+      <h2>
+        {application.position}
+        at
+        {application.company_name}
+      </h2>
       <p>${application.salary} in {application.location}</p>
       <button className="btn-action" onClick={() => showDetail()}>Details</button>
     </div>
-  )
+  );
 }
