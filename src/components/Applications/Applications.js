@@ -22,7 +22,7 @@ export default function Applications() {
           setLoaded(true);
         }
       })
-      .catch((err) => setErrors(['There was an error while fetching data: ', err]))
+      .catch((err) => setErrors(['There was an error while fetching data: ', err]));
   }, [errors]);
 
   const onClickAddNew = () => {

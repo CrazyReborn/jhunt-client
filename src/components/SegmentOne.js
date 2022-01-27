@@ -10,7 +10,7 @@ export default function SegmentOne() {
     if (typeof token !== 'undefined') {
       navigate('/signin');
     } else {
-      navigate('/applications');
+      navigate('/dashboard/applications');
     }
   };
   return (

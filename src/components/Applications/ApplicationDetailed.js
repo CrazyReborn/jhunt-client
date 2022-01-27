@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import LoadingSpinner from '../LoadingSpinner';
+import ApplicationDelete from './ApplicationDelete';
 
 export default function ApplicationDetailed() {
   const { id } = useParams();
   const [application, setApplication] = useState('');
-  const [errors, setErrors] = useState([]);
+  const [, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    fetch(`process.env.REACT_APP_API_SERVERapplications/${id}`, {
+    fetch(`${process.env.REACT_APP_API_SERVER}applications/${id}`, {
       method: 'GET',
       credentials: 'include',
     })
@@ -19,6 +20,7 @@ export default function ApplicationDetailed() {
           setLoaded(true);
         } else {
           setErrors(json.err.errors);
+          setLoaded(true);
         }
       })
       .catch((err) => setErrors([err]));
@@ -66,6 +68,7 @@ export default function ApplicationDetailed() {
             Qualifications
             {application.qualifications_met}
           </p>
+          <ApplicationDelete application={application} />
         </article>
       )
       : <LoadingSpinner />

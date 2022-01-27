@@ -13,5 +13,5 @@ export default function Navbar() {
         <li><NavLink to="/logout">Log Out</NavLink></li>
       </ul>
     </nav>
-  )
+  );
 }
