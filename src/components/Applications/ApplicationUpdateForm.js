@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { format } from 'date-fns';
+import parseISO from 'date-fns/parseISO';
 
 export default function ApplicationUpdateForm(props) {
   const { application, setUpdating } = props;
@@ -9,11 +11,11 @@ export default function ApplicationUpdateForm(props) {
   const [status, setStatus] = useState(application.status);
   const [location, setLocation] = useState(application.location);
   const [aggregator, setAggregator] = useState(application.aggregator);
-  const [foundOn, setFoundOn] = useState(application.found_on);
-  const [cvSentOn, setCvSentOn] = useState(application.cv_sent_on);
+  const [foundOn, setFoundOn] = useState(format(parseISO(application.found_on), 'yyyy-MM-dd'));
+  const [cvSentOn, setCvSentOn] = useState(format(parseISO(application.cv_sent_on), 'yyyy-MM-dd'));
   const [cvPath, setCvPath] = useState(application.cv_path);
   const [jobLink, setJobLink] = useState(application.job_link);
-  const [answerReceived, setAnswerReceived] = useState(application.answer_received);
+  const [answerReceived, setAnswerReceived] = useState(format(parseISO(application.answer_received), 'yyyy-MM-dd'));
   const [qualificationsMet, setQualificationsMet] = useState(application.qualifications_met);
   const [errors, setErrors] = useState([]);
 

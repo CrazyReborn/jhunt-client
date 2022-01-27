@@ -13,13 +13,13 @@ export default function ApplicationGeneral(props) {
     <div className="application">
       <h2>
         {application.position}
-        at
+        {' at '}
         {application.company_name}
       </h2>
       <p>
         $
         {application.salary}
-        in
+        {' in '}
         {application.location}
       </p>
       <button type="button" className="btn-action" onClick={() => showDetail()}>Details</button>

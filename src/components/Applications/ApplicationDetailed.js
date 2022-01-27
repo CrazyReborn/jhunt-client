@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { format } from 'date-fns';
+import parseISO from 'date-fns/parseISO';
 import LoadingSpinner from '../LoadingSpinner';
 import ApplicationDelete from './ApplicationDelete';
 import ApplicationUpdateForm from './ApplicationUpdateForm';
@@ -60,12 +62,12 @@ export default function ApplicationDetailed() {
             </p>
             <p>
               Found on
-              {application.found_on}
+              {format(parseISO(application.found_on), 'yyyy-MM-dd')}
             </p>
             <p><a href={application.job_link}>Job link</a></p>
             <p>
               Answers received:
-              {application.answer_received}
+              {format(parseISO(application.answer_received), 'yyyy-MM-dd')}
             </p>
             <p>
               Qualifications
