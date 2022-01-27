@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ApplicationGeneral from './ApplicationGeneral';
-import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner';
 
 export default function Applications() {
   const [applications, setApplicatoins] = useState([]);

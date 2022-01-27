@@ -1,5 +1,7 @@
-export default function Events () {
+import React from 'react';
+
+export default function Events() {
   return (
     <div>Events</div>
-  )
+  );
 }

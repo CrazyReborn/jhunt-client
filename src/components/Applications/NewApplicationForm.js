@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/newApplicationForm.css';
+import '../../styles/newApplicationForm.css';
 
 export default function NewApplicationForm() {
   const [companyName, setCompanyName] = useState('');

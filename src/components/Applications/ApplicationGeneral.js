@@ -15,8 +15,13 @@ export default function ApplicationGeneral(props) {
         at
         {application.company_name}
       </h2>
-      <p>${application.salary} in {application.location}</p>
-      <button className="btn-action" onClick={() => showDetail()}>Details</button>
+      <p>
+        $
+        {application.salary}
+        in
+        {application.location}
+      </p>
+      <button type="button" className="btn-action" onClick={() => showDetail()}>Details</button>
     </div>
   );
 }
