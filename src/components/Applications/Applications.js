@@ -17,12 +17,16 @@ export default function Applications() {
       .then((json) => {
         if (json.applications === undefined) {
           setErrors(json.err.errors);
+          setLoaded(true);
         } else {
           setApplicatoins(json.applications);
           setLoaded(true);
         }
       })
-      .catch((err) => setErrors(['There was an error while fetching data: ', err]));
+      .catch((err) => {
+        setErrors(['There was an error while fetching data: ', err]);
+        setLoaded(true);
+      });
   }, [errors]);
 
   const onClickAddNew = () => {

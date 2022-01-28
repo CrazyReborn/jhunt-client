@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/SegmentOne.css';
 
 export default function SegmentOne() {
   const [btnActive, setBtnActive] = useState(true);
+  const [access, setAccess] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch(`${process.env.REST_APP_API_SERVER}signin`, {
+      method: 'GET',
+      credentials: 'include',
+    }).then((res) => {
+      if (res.ok) {
+        setAccess(true);
+      } else {
+        setAccess(false);
+      }
+    })
+      .catch((err) => console.log(err));
+  });
   const getStarted = () => {
     setBtnActive(!btnActive);
-    if (typeof token !== 'undefined') {
+    if (!access) {
       navigate('/signin');
     } else {
       navigate('/dashboard/applications');

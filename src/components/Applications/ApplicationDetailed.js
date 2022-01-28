@@ -36,41 +36,45 @@ export default function ApplicationDetailed() {
         ? (
           <article className="detailed">
             <h2>
-              Company:
+              {'Company: '}
               {application.company_name}
             </h2>
             <p>
-              Position:
+              {'Position: '}
               {application.position}
             </p>
             <p>
-              Salary:
+              {'Salary: '}
               {application.salary}
               $ per month
             </p>
             <p>
-              Status:
+              {'Status: '}
               {application.status}
             </p>
             <p>
-              Location:
+              {'Location: '}
               {application.location}
             </p>
             <p>
-              Aggregator:
+              {'Aggregator: '}
               {application.aggregator}
             </p>
             <p>
-              Found on
-              {format(parseISO(application.found_on), 'yyyy-MM-dd')}
+              {'Found on: '}
+              {typeof application.found_on === 'undefined'
+                ? ''
+                : format(parseISO(application.found_on), 'yyyy-MM-dd')}
             </p>
             <p><a href={application.job_link}>Job link</a></p>
             <p>
-              Answers received:
-              {format(parseISO(application.answer_received), 'yyyy-MM-dd')}
+              {'Answers received: '}
+              {typeof application.answer_received === 'undefined'
+                ? ''
+                : format(parseISO(application.answer_received), 'yyyy-MM-dd')}
             </p>
             <p>
-              Qualifications
+              {'Qualifications: '}
               {application.qualifications_met}
             </p>
             <button type="button" onClick={() => setUpdating(true)}>Update</button>

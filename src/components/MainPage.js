@@ -7,6 +7,7 @@ import Profile from './Profile';
 import '../styles/MainPage.css';
 import ApplicationDetailed from './Applications/ApplicationDetailed';
 import NewApplicationForm from './Applications/NewApplicationForm';
+import Interviews from './Interviews/Interviews';
 
 export default function MainPage() {
   return (
@@ -14,10 +15,11 @@ export default function MainPage() {
       <Navbar />
       <div className="outlet">
         <Routes>
-          <Route path="/applications/*" element={<Applications />} />
-          <Route path="/applications/:id" element={<ApplicationDetailed />} />
-          <Route path="/applications/new" element={<NewApplicationForm />} />
+          <Route path="applications" element={<Applications />} />
+          <Route path="applications/:id" element={<ApplicationDetailed />} />
+          <Route path="applications/new" element={<NewApplicationForm />} />
           <Route path="/events/*" element={<Events />} />
+          <Route path="interviews" element={<Interviews />} />
           <Route path="/profile/*" element={<Profile />} />
         </Routes>
       </div>
