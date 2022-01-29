@@ -8,18 +8,19 @@ export default function SegmentOne() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${process.env.REST_APP_API_SERVER}signin`, {
+    fetch(`${process.env.REACT_APP_API_SERVER}signin`, {
       method: 'GET',
       credentials: 'include',
-    }).then((res) => {
-      if (res.ok) {
-        setAccess(true);
-      } else {
-        setAccess(false);
-      }
     })
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.msg === 'ok') {
+          setAccess(true);
+        }
+      })
       .catch((err) => console.log(err));
   });
+
   const getStarted = () => {
     setBtnActive(!btnActive);
     if (!access) {

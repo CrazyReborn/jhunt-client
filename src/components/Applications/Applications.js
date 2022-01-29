@@ -4,7 +4,7 @@ import ApplicationGeneral from './ApplicationGeneral';
 import LoadingSpinner from '../LoadingSpinner';
 
 export default function Applications() {
-  const [applications, setApplicatoins] = useState([]);
+  const [applications, setApplications] = useState([]);
   const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export default function Applications() {
           setErrors(json.err.errors);
           setLoaded(true);
         } else {
-          setApplicatoins(json.applications);
+          setApplications(json.applications);
           setLoaded(true);
         }
       })
