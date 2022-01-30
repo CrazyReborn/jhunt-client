@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../LoadingSpinner';
 
 export default function InterviewDetailed() {
   const [interview, setInterview] = useState();
   const { id } = useParams();
+  const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
   const [errors, setErrors] = useState(undefined);
   const [loaded, setLoaded] = useState(false);
@@ -25,7 +26,21 @@ export default function InterviewDetailed() {
         }
       })
       .catch((err) => setErrors(err));
-  }, []);
+  }, [id]);
+
+  const DeleteInterview = () => {
+    fetch(`${process.env.REACT_APP_API_SERVER}interviews/${id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+    }).then((res) => res.json())
+      .then((json) => {
+        if (typeof json.err !== 'undefined') {
+          setErrors(json.err);
+        } else {
+          navigate('/dashboard/interviews');
+        }
+      });
+  };
 
   return (
     loaded
@@ -46,6 +61,7 @@ export default function InterviewDetailed() {
               </>
             )
             : ''}
+          <button type="button" onClick={() => DeleteInterview()}>Delete</button>
         </div>
       )
       : <LoadingSpinner />
