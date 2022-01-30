@@ -7,7 +7,7 @@ export default function InterviewGeneral(props) {
   const navigate = useNavigate();
 
   const moveToDetails = () => {
-    navigate(`${interview.id}`);
+    navigate(`${interview._id}`);
   };
 
   return (

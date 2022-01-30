@@ -37,7 +37,12 @@ export default function Interviews() {
           <button type="button" className="btn-action" onClick={() => onClickAddNew()}>
             Add New Application
           </button>
-          {interviews.map((interview) => <InterviewGeneral interview={interview} />)}
+          {interviews.map((interview) => (
+            <InterviewGeneral
+              key={interview._id}
+              interview={interview}
+            />
+          ))}
         </>
       )
   );
