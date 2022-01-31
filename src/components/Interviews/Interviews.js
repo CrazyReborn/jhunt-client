@@ -29,6 +29,9 @@ export default function Interviews() {
     navigate('/dashboard/interviews/new');
   };
 
+  const upcoming = interviews.filter((interview) => interview.status === 'Upcoming');
+  const finished = interviews.filter((interview) => interview.status === 'Finished');
+
   return (
     !loaded
       ? <LoadingSpinner />
@@ -37,12 +40,24 @@ export default function Interviews() {
           <button type="button" className="btn-action" onClick={() => onClickAddNew()}>
             Add New Application
           </button>
-          {interviews.map((interview) => (
-            <InterviewGeneral
-              key={interview._id}
-              interview={interview}
-            />
-          ))}
+          <div className="upcomingInterviews">
+            Upcoming:
+            {upcoming.map((interview) => (
+              <InterviewGeneral
+                key={interview._id}
+                interview={interview}
+              />
+            ))}
+          </div>
+          <div className="finishedInterviews">
+            Finished:
+            {finished.map((interview) => (
+              <InterviewGeneral
+                key={interview._id}
+                interview={interview}
+              />
+            ))}
+          </div>
         </>
       )
   );
