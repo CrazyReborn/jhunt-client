@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../LoadingSpinner';
+import InterviewUpdateForm from './InterviewUpdateForm';
 
 export default function InterviewDetailed() {
   const [interview, setInterview] = useState();
@@ -10,6 +11,7 @@ export default function InterviewDetailed() {
   // eslint-disable-next-line no-unused-vars
   const [errors, setErrors] = useState(undefined);
   const [loaded, setLoaded] = useState(false);
+  const [updating, setUpdating] = useState(false);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_SERVER}interviews/${id}`, {
@@ -41,29 +43,37 @@ export default function InterviewDetailed() {
         }
       });
   };
-
-  return (
-    loaded
-      ? (
-        <div className="interviewDetailed">
-          <h3>
-            {'Interview at '}
-            {interview.application.company_name}
-            {' on '}
-            {interview.date}
-          </h3>
-          <p>{typeof interview.status !== 'undefined' ? interview.status : ''}</p>
-          {interview.status === 'Finished'
-            ? (
-              <>
-                <p>{interview.length}</p>
-                <p>{interview.rate}</p>
-              </>
-            )
-            : ''}
-          <button type="button" onClick={() => DeleteInterview()}>Delete</button>
-        </div>
-      )
-      : <LoadingSpinner />
+  if (!updating) {
+    return (
+      loaded
+        ? (
+          <div className="interviewDetailed">
+            <h3>
+              {'Interview at '}
+              {interview.application.company_name}
+              {' on '}
+              {interview.date}
+            </h3>
+            <p>{typeof interview.status !== 'undefined' ? interview.status : ''}</p>
+            {interview.status === 'Finished'
+              ? (
+                <>
+                  <p>{interview.length}</p>
+                  <p>{interview.rate}</p>
+                </>
+              )
+              : ''}
+            <button type="button" onClick={() => setUpdating(true)}>Update</button>
+            <button type="button" onClick={() => DeleteInterview()}>Delete</button>
+          </div>
+        )
+        : <LoadingSpinner />
+    );
+  } return (
+    <InterviewUpdateForm
+      interview={interview}
+      setUpdating={setUpdating}
+      setErrors={setErrors}
+    />
   );
 }
