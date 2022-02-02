@@ -22,7 +22,7 @@ export default function ApplicationGeneral(props) {
         {' in '}
         {application.location}
       </p>
-      <button type="button" className="btn-action" onClick={() => showDetail()}>Details</button>
+      <button type="button" className="btn-details" onClick={() => showDetail()}>Details</button>
     </div>
   );
 }

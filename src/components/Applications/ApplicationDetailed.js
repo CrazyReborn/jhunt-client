@@ -5,6 +5,7 @@ import parseISO from 'date-fns/parseISO';
 import LoadingSpinner from '../LoadingSpinner';
 import ApplicationDelete from './ApplicationDelete';
 import ApplicationUpdateForm from './ApplicationUpdateForm';
+import '../../styles/ApplicationDetailed.css';
 
 export default function ApplicationDetailed() {
   const { id } = useParams();
@@ -66,7 +67,15 @@ export default function ApplicationDetailed() {
                 ? ''
                 : format(parseISO(application.found_on), 'yyyy-MM-dd')}
             </p>
-            <p><a href={application.job_link}>Job link</a></p>
+            <p>
+              <a
+                href={application.job_link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Job link
+              </a>
+            </p>
             <p>
               {'Answers received: '}
               {typeof application.answer_received === 'undefined'
@@ -77,8 +86,16 @@ export default function ApplicationDetailed() {
               {'Qualifications: '}
               {application.qualifications_met}
             </p>
-            <button type="button" onClick={() => setUpdating(true)}>Update</button>
-            <ApplicationDelete application={application} />
+            <div className="application-btns">
+              <button
+                className="btn-update-delete"
+                type="button"
+                onClick={() => setUpdating(true)}
+              >
+                Update
+              </button>
+              <ApplicationDelete application={application} />
+            </div>
           </article>
         )
         : <LoadingSpinner />

@@ -1,0 +1,18 @@
+.detailed {
+  align-self: flex-start;
+  margin: 5%;
+}
+
+.application-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+}
+
+.btn-update-delete{
+  margin-top: 0;
+  padding-left: 4%;
+  font-size: 36px;
+  border: 1px solid #2353FF;
+  border-radius: 1rem;
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as ApplicationsLogo } from '../images/description_black_24dp.svg';
-import { ReactComponent as EventsLogo } from '../images/calendar_today_black_24dp.svg';
 import { ReactComponent as InterviewsLogo } from '../images/question_answer_black_24dp.svg';
 import { ReactComponent as ProfileLogo } from '../images/manage_accounts_black_24dp.svg';
 import { ReactComponent as LogoutLogo } from '../images/logout_black_24dp.svg';
@@ -15,12 +14,6 @@ export default function Navbar() {
           <NavLink to="/dashboard/applications">
             <ApplicationsLogo fill="white" />
             Applications
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/dashboard/events">
-            <EventsLogo fill="white" />
-            Events
           </NavLink>
         </li>
         <li>

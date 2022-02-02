@@ -19,7 +19,7 @@ export default function InterviewGeneral(props) {
       <p>
         {interview.date}
       </p>
-      <button type="button" className="btn-action" onClick={() => moveToDetails()}>Details</button>
+      <button type="button" className="btn-details" onClick={() => moveToDetails()}>Details</button>
     </div>
   );
 }

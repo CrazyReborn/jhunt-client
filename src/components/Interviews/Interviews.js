@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InterviewGeneral from './InterviewGeneral';
 import LoadingSpinner from '../LoadingSpinner';
+import '../../styles/Interviews.css';
 
 export default function Interviews() {
   const [loaded, setLoaded] = useState(false);
@@ -38,10 +39,10 @@ export default function Interviews() {
       : (
         <>
           <button type="button" className="btn-action" onClick={() => onClickAddNew()}>
-            Add New Application
+            Add New Interview
           </button>
           <div className="upcomingInterviews">
-            Upcoming:
+            <h3>Upcoming:</h3>
             {upcoming.map((interview) => (
               <InterviewGeneral
                 key={interview._id}
@@ -50,7 +51,7 @@ export default function Interviews() {
             ))}
           </div>
           <div className="finishedInterviews">
-            Finished:
+            <h3>Finished:</h3>
             {finished.map((interview) => (
               <InterviewGeneral
                 key={interview._id}

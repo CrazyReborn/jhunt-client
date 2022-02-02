@@ -20,7 +20,7 @@ export default function ApplicationDelete(props) {
   };
   return (
     <form onSubmit={(e) => onSubmit(e)}>
-      <input className="btn-confirm-delete" type="submit" value="Delete" />
+      <input className="btn-update-delete" type="submit" value="Delete" />
     </form>
   );
 }

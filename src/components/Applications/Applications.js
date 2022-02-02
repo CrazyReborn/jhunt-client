@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ApplicationGeneral from './ApplicationGeneral';
 import LoadingSpinner from '../LoadingSpinner';
+import '../../styles/Applications.css';
 
 export default function Applications() {
   const [applications, setApplications] = useState([]);
@@ -38,12 +39,14 @@ export default function Applications() {
       ? (
         <>
           <button type="button" className="btn-action" onClick={() => onClickAddNew()}>Add New Application</button>
-          {applications.map((application) => (
-            <ApplicationGeneral
-              key={application._id}
-              application={application}
-            />
-          ))}
+          <div className="applications">
+            {applications.map((application) => (
+              <ApplicationGeneral
+                key={application._id}
+                application={application}
+              />
+            ))}
+          </div>
           {errors !== []
             ? (
               <div className="errors">

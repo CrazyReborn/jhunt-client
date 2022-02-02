@@ -1,9 +1,13 @@
 nav {
-  min-width: fit-content;
+  position: sticky;
+  position: -webkit-sticky;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-bottom: 2rem;
+  min-width: 15%;
+  min-width: fit-content;
+  height: 100vh;
   width: 15%;
+  top: 0;
   background-color: blue;
   display: flex;
   flex-direction: column;
@@ -11,7 +15,7 @@ nav {
 }
 
 nav > ul {
-  margin: 0;
+  margin: 0 0 1rem;
   padding: 0;
   list-style-type: none;
   display: flex;
@@ -19,12 +23,34 @@ nav > ul {
 }
 
 nav > ul > li > a {
+  display: block;
   font-family: 'Merriweather';
   text-decoration: none;
   color: white;
   font-size: 36px;
 }
 
+a.active::after {
+  margin: 0;
+  display: block;
+  position: absolute;
+  content: ' ';
+  background-color: white;
+  height: 0.5rem;
+  width: 15rem;
+  left: 1rem;
+  animation: activation 0.5s ease;
+}
+
 nav > ul > li {
   margin-top: 5rem;
+}
+
+@keyframes activation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 15rem;
+  }
 }
