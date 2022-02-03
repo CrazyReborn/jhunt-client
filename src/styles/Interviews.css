@@ -4,7 +4,8 @@
 }
 
 .upcomingInterviews {
-  padding: 1rem 2rem 1rem;
+  padding: 1rem auto 1rem;
+  margin: 0 auto 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(min-content, auto));
   gap: 10px;
@@ -12,6 +13,7 @@
 
 .upcomingInterviews h3 {
   grid-column: 1/-1;
+  text-align: center;
 }
 
 @media screen and (max-width: 1325px) {
@@ -29,14 +31,15 @@
 }
 
 .finishedInterviews {
-  padding: 1rem 2rem 1rem;
+  padding: 1rem auto 1rem;
   display: grid;
-  grid-template-columns: repeat(4, minmax(min-content, auto));
+  grid-template-columns: repeat(4, minmax(min-content, 0.25fr));
   gap: 10px;
 }
 
 .finishedInterviews h3 {
   grid-column: 1/-1;
+  text-align: center;
 }
 
 @media screen and (max-width: 1325px) {

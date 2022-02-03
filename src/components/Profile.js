@@ -19,7 +19,7 @@ export default function Profile() {
       data: {
         label: `Listing at ${application.company_name}`,
       },
-      position: { x: 250 + 200 * index, y: 20 },
+      position: { x: 250 + 200 * (applicationsArray.length) * index, y: 0 },
       draggable: false,
       isHidden: false,
     }));
@@ -29,11 +29,11 @@ export default function Profile() {
   const createInterviewsElements = (interviewsArray) => {
     const newArray = interviewsArray.map((interview, index) => ({
       id: interview._id,
-      type: 'output',
+      type: 'default',
       data: {
         label: `Interview on ${format(parseISO(interview.date), 'yyyy-MM-dd')}`,
       },
-      position: { x: 100 + 25 * index, y: 100 + 75 * index },
+      position: { x: 100 + 75 * (interviewsArray.length - 1) * index, y: 100 + 75 * index },
       draggable: false,
       isHidden: false,
     }));
@@ -43,6 +43,26 @@ export default function Profile() {
       target: interview._id,
     }));
     const results = newArray.concat(connections);
+    return results;
+  };
+
+  const createOffersElement = (offerArray) => {
+    const offerElementsArray = offerArray.map((offer, index) => ({
+      id: offer._id,
+      type: 'output',
+      data: {
+        label: `Offer was received ${format(parseISO(offer.received), 'yyyy-MM-dd')}`,
+      },
+      position: { x: 75 + 25 * index, y: 200 * (index + 1) },
+      draggable: false,
+      isHidden: false,
+    }));
+    const connections = offerArray.map((offer, index) => ({
+      id: `${offer._id}-${offer.interview}`,
+      source: offer.interview,
+      target: offer._id,
+    }));
+    const results = offerElementsArray.concat(connections);
     return results;
   };
 
@@ -60,6 +80,7 @@ export default function Profile() {
           setInterviews(json.interviews);
           setElements(createApplicationsElements(json.applications));
           setElements((old) => old.concat(createInterviewsElements(json.interviews)));
+          setElements((old) => old.concat(createOffersElement(json.offers)));
         }
       })
       .catch((err) => console.log('error: ', err))
