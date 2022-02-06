@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 import '../../styles/newApplicationForm.css';
 
-export default function NewApplicationForm() {
+export default function NewApplicationForm({ creatingNew, setCreatingNew }) {
   const [companyName, setCompanyName] = useState('');
   const [position, setPosition] = useState('');
   const [salary, setSalary] = useState('');
   const [status, setStatus] = useState('');
   const [location, setLocation] = useState('');
+  const [date, setDate] = useState('');
+  const [jobLink, setJobLink] = useState('');
   const [qualificationsMet, setQualificationsMet] = useState('');
   const [errors, setErrors] = useState([]);
-  const navigation = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -26,6 +27,8 @@ export default function NewApplicationForm() {
         salary,
         status,
         location,
+        date,
+        jobLink,
         qualificationsMet,
       }),
     }).then((res) => res.json())
@@ -33,14 +36,19 @@ export default function NewApplicationForm() {
         console.log(json.msg, json.err);
         if (typeof json.msg === 'undefined') {
           setErrors(json.err.errors);
-        } else navigation('/dashboard/applications');
+        } else setCreatingNew(false);
       })
       .catch((err) => setErrors(err));
   };
 
-  return (
-    <>
-      <form className="newApplication" onSubmit={(e) => onSubmit(e)}>
+  if (!creatingNew) return null;
+  return ReactDOM.createPortal(
+    <div className="new-application-container">
+      <form className="new-application" onSubmit={(e) => onSubmit(e)}>
+        <div className="sub-container">
+          <h3>Add new application</h3>
+          <button type="button" onClick={() => setCreatingNew(false)}>Cancel</button>
+        </div>
         <label htmlFor="companyName">
           Company Name
           <input type="text" id="companyName" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
@@ -64,6 +72,14 @@ export default function NewApplicationForm() {
             <option value="Interview">Interview</option>
             <option value="Offered">Offered</option>
           </select>
+        </label>
+        <label htmlFor="date">
+          Select date
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        </label>
+        <label htmlFor="jobLink">
+          Link to the offer:
+          <input type="text" id="jobLink" value={jobLink} onChange={(e) => setJobLink(e.target.value)} />
         </label>
         <label htmlFor="location">
           Location
@@ -89,6 +105,7 @@ export default function NewApplicationForm() {
           </div>
         )
         : ''}
-    </>
+    </div>,
+    document.getElementById('portal'),
   );
 }

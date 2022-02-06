@@ -54,33 +54,19 @@ export default function ApplicationDetailed() {
               {application.status}
             </p>
             <p>
-              {'Location: '}
-              {application.location}
-            </p>
-            <p>
-              {'Aggregator: '}
-              {application.aggregator}
-            </p>
-            <p>
-              {'Found on: '}
-              {typeof application.found_on === 'undefined'
+              {'Date: '}
+              {typeof application.date === 'undefined'
                 ? ''
-                : format(parseISO(application.found_on), 'yyyy-MM-dd')}
+                : format(parseISO(application.date), 'yyyy-MM-dd')}
             </p>
             <p>
               <a
-                href={application.job_link}
+                href={application.jobLink}
                 target="_blank"
                 rel="noreferrer"
               >
                 Job link
               </a>
-            </p>
-            <p>
-              {'Answers received: '}
-              {typeof application.answer_received === 'undefined'
-                ? ''
-                : format(parseISO(application.answer_received), 'yyyy-MM-dd')}
             </p>
             <p>
               {'Qualifications: '}
