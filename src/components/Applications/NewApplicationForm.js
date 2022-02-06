@@ -8,12 +8,6 @@ export default function NewApplicationForm() {
   const [salary, setSalary] = useState('');
   const [status, setStatus] = useState('');
   const [location, setLocation] = useState('');
-  const [aggregator, setAggregator] = useState('');
-  const [foundOn, setFoundOn] = useState('');
-  const [cvSentOn, setCvSentOn] = useState('');
-  const [cvPath, setCvPath] = useState('');
-  const [jobLink, setJobLink] = useState('');
-  const [answerReceived, setAnswerReceived] = useState('');
   const [qualificationsMet, setQualificationsMet] = useState('');
   const [errors, setErrors] = useState([]);
   const navigation = useNavigate();
@@ -32,12 +26,6 @@ export default function NewApplicationForm() {
         salary,
         status,
         location,
-        aggregator,
-        foundOn,
-        cvSentOn,
-        cvPath,
-        jobLink,
-        answerReceived,
         qualificationsMet,
       }),
     }).then((res) => res.json())
@@ -71,38 +59,15 @@ export default function NewApplicationForm() {
             <option value={null}>--Please select an option--</option>
             <option value="Application sent">Application sent</option>
             <option value="No answer">No answer</option>
-            <option value="Rejection">Rejection</option>
-            <option value="Upcoming interview">Upcoming interview</option>
+            <option value="No offer">No offer</option>
+            <option value="Phone call">Phone call</option>
+            <option value="Interview">Interview</option>
             <option value="Offered">Offered</option>
           </select>
         </label>
         <label htmlFor="location">
           Location
           <input type="text" id="location" value={location} onChange={(e) => setLocation(e.target.value)} />
-        </label>
-        <label htmlFor="aggregator">
-          Aggregator
-          <input type="text" id="aggregator" value={aggregator} onChange={(e) => setAggregator(e.target.value)} />
-        </label>
-        <label htmlFor="foundOn">
-          Offer was found on:
-          <input type="date" id="foundOn" value={foundOn} onChange={(e) => setFoundOn(e.target.value)} />
-        </label>
-        <label htmlFor="cvSentOn">
-          CV was sent on:
-          <input type="date" id="cvSentOn" value={cvSentOn} onChange={(e) => setCvSentOn(e.target.value)} />
-        </label>
-        <label htmlFor="cvPath">
-          Upload CV
-          <input type="file" id="cvPath" value={cvPath} onChange={(e) => setCvPath(e.target.value)} />
-        </label>
-        <label htmlFor="jobLink">
-          Link to the offer:
-          <input type="text" id="jobLink" value={jobLink} onChange={(e) => setJobLink(e.target.value)} />
-        </label>
-        <label htmlFor="answerReceivedOn">
-          Answer received on:
-          <input type="date" id="answerReceivedOn" value={answerReceived} onChange={(e) => setAnswerReceived(e.target.value)} />
         </label>
         <label htmlFor="qualificationsMet">
           Qualifications:
