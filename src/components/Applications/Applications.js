@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import ApplicationGeneral from './ApplicationGeneral';
 import LoadingSpinner from '../LoadingSpinner';
 import '../../styles/Applications.css';
@@ -8,7 +7,7 @@ export default function Applications() {
   const [applications, setApplications] = useState([]);
   const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const navigate = useNavigate();
+
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_SERVER}applications`, {
       method: 'GET',
@@ -30,15 +29,10 @@ export default function Applications() {
       });
   }, [errors]);
 
-  const onClickAddNew = () => {
-    navigate('/dashboard/applications/new');
-  };
-
   return (
     loaded
       ? (
         <>
-          <button type="button" className="btn-action" onClick={() => onClickAddNew()}>Add New Application</button>
           <div className="applications">
             {applications.map((application) => (
               <ApplicationGeneral

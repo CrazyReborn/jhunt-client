@@ -32,15 +32,15 @@ export default function SignUp() {
     <div className="sign-up">
       <form onSubmit={(e) => onSubmit(e)}>
         <label htmlFor="username">
-          Username
+          {'Username: '}
           <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
         <label htmlFor="password">
-          Password
+          {'Password: '}
           <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
         <label htmlFor="confirm-password">
-          Confirm Password
+          {'Confirm Password: '}
           <input type="password" name="confirm-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
         </label>
         <p>

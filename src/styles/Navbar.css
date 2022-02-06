@@ -9,7 +9,7 @@ nav {
   top: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  background-color: blue;
 }
 
 nav > ul {
@@ -24,7 +24,17 @@ nav > ul > li > a {
   display: block;
   font-family: 'Merriweather';
   text-decoration: none;
-  font-size: 36px;
+  font-size: 24px;
+  color: white;
+}
+
+nav > .btn-action {
+  margin-top: 1rem;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding: 1em;
+  border-radius: 1em;
 }
 
 a.active::after {
@@ -32,8 +42,9 @@ a.active::after {
   display: block;
   position: absolute;
   content: ' ';
-  height: 0.5rem;
-  width: 15rem;
+  background-color: white;
+  height: 0.25rem;
+  width: 8em;
   left: 1rem;
   animation: activation 0.5s ease;
 }
@@ -47,6 +58,6 @@ nav > ul > li {
     width: 0%;
   }
   to {
-    width: 15rem;
+    width: 8em;
   }
 }
