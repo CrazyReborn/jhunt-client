@@ -47,10 +47,10 @@ export default function NewInterviewForm() {
       }),
     }).then((res) => res.json())
       .then((json) => {
-        if (json.msg === 'success') {
-          navigate('/dashboard/interviews');
+        if (typeof json.err !== 'undefined') {
+          setErrors(json.err);
         } else {
-          setErrors(json.err.errors);
+          navigate('/dashboard/interviews');
         }
       });
   };

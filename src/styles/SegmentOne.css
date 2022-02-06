@@ -29,9 +29,7 @@ p {
 
 .btn-action {
   position: relative;
-  background-color: #2353FF;
   font-size: 36px;
-  color: white;
   border: none;
   outline: none;
   border-radius: 1.5rem;
@@ -46,7 +44,6 @@ p {
 
 .btn-action:hover {
   cursor: pointer;
-  background-color: rgb(24, 64, 209);
 }
 
 .btn-action.loading > .btn-text {
@@ -65,7 +62,7 @@ p {
   height: 2rem;
   margin: auto;
   border: 5px solid transparent;
-  border-top-color: #ffffff;
+  border-top-color: #000000;
   border-radius: 50%;
   animation: btn-action-loading-spinner 1s ease infinite;
 }

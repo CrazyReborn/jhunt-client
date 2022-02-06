@@ -9,6 +9,7 @@ import NewApplicationForm from './Applications/NewApplicationForm';
 import Interviews from './Interviews/Interviews';
 import NewInterviewForm from './Interviews/NewInterviewForm';
 import InterviewDetailed from './Interviews/InterviewDetailed';
+import Offers from './Offers/Offers';
 
 export default function MainPage() {
   return (
@@ -22,6 +23,7 @@ export default function MainPage() {
           <Route path="interviews" element={<Interviews />} />
           <Route path="interviews/:id" element={<InterviewDetailed />} />
           <Route path="interviews/new" element={<NewInterviewForm />} />
+          <Route path="offers" element={<Offers />} />
           <Route path="/profile/*" element={<Profile />} />
         </Routes>
       </div>

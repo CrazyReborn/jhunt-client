@@ -37,7 +37,7 @@ export default function InterviewDetailed() {
     }).then((res) => res.json())
       .then((json) => {
         if (typeof json.err !== 'undefined') {
-          setErrors(json.err);
+          console.log(json.err);
         } else {
           navigate('/dashboard/interviews');
         }

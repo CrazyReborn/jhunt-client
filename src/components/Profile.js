@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import ReactFlow, { Position } from 'react-flow-renderer';
 import format from 'date-fns/format';
 import parseISO from 'date-fns/parseISO';
-import LoadingSpinner from './LoadingSpinner';
 
 export default function Profile() {
   const [applications, setApplications] = useState([]);
@@ -92,6 +91,6 @@ export default function Profile() {
       ? (
         <ReactFlow elements={elements} />
       )
-      : <LoadingSpinner />
+      : ''
   );
 }

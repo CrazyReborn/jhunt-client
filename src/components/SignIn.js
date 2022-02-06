@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import '../styles/SignUp.css';
 
 export default function SignIn() {
   const [username, setUsername] = useState('');
@@ -30,15 +31,15 @@ export default function SignIn() {
     <div className="sign-up">
       <form onSubmit={(e) => onSubmit(e)}>
         <label htmlFor="username">
-          Username
+          {'Username: '}
           <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
         <label htmlFor="password">
-          Password
+          {'Password: '}
           <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
         <p>
-          Don`&quot;`t have an account yet?
+          {'Don\'t have an account yet? '}
           <Link to="/signup">Sign Up</Link>
         </p>
         <input className="btn-action" type="submit" value="Sign In" />
