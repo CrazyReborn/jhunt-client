@@ -1,16 +1,21 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { format } from 'date-fns';
 import parseISO from 'date-fns/parseISO';
+import { ReactComponent as CloseLogo } from '../../images/close_black_24dp.svg';
 
-export default function ApplicationUpdateForm(props) {
-  const { application, setUpdating } = props;
+export default function ApplicationUpdateForm({
+  application,
+  updating,
+  setUpdating,
+}) {
   const [companyName, setCompanyName] = useState(application.company_name);
   const [position, setPosition] = useState(application.position);
   const [salary, setSalary] = useState(application.salary);
   const [status, setStatus] = useState(application.status);
   const [location, setLocation] = useState(application.location);
-  const [date, setDate] = useState(format(parseISO(application.date)));
+  const [date, setDate] = useState(format(parseISO(application.date), 'yyyy-MM-dd'));
   const [jobLink, setJobLink] = useState(application.jobLink);
   const [qualificationsMet, setQualificationsMet] = useState(application.qualifications_met);
   const [errors, setErrors] = useState([]);
@@ -29,6 +34,7 @@ export default function ApplicationUpdateForm(props) {
         salary,
         status,
         location,
+        jobLink,
         date,
         qualificationsMet,
       }),
@@ -37,18 +43,20 @@ export default function ApplicationUpdateForm(props) {
         if (typeof json.msg !== 'undefined') {
           setUpdating(false);
         } else {
-          setErrors(json.err.errors);
+          setErrors(json.err);
         }
       })
       .catch((err) => setErrors(err));
   };
 
-  const cancelUpdate = () => {
-    setUpdating(false);
-  };
-  return (
-    <>
-      <form className="newApplication" onSubmit={(e) => onSubmit(e)}>
+  if (updating === false) return null;
+  return ReactDOM.createPortal(
+    <div className="new-application-container">
+      <form className="new-application" onSubmit={(e) => onSubmit(e)}>
+        <div className="sub-container">
+          <h3>Add new application</h3>
+          <CloseLogo className="new-application-close" onClick={() => setUpdating(false)} />
+        </div>
         <label htmlFor="companyName">
           Company Name
           <input type="text" id="companyName" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
@@ -96,16 +104,16 @@ export default function ApplicationUpdateForm(props) {
             <option value="Fully unmet">Fully unmet</option>
           </select>
         </label>
-        <button type="button" onClick={() => cancelUpdate()}>Cancel Update</button>
         <input type="submit" value="Submit" />
+        {errors.length > 0
+          ? (
+            <div className="errors">
+              {errors.map((err) => <p key={err.param}>{err.msg}</p>)}
+            </div>
+          )
+          : ''}
       </form>
-      {errors.length > 0
-        ? (
-          <div className="errors">
-            {errors.map((err) => <p key={err.param}>{err.msg}</p>)}
-          </div>
-        )
-        : ''}
-    </>
+    </div>,
+    document.getElementById('portal'),
   );
 }

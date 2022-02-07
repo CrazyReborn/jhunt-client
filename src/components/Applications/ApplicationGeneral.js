@@ -1,14 +1,11 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import ApplicationUpdateForm from './ApplicationUpdateForm';
 
 export default function ApplicationGeneral(props) {
   const { application } = props;
-  const navigation = useNavigate();
+  const [updating, setUpdating] = useState(false);
 
-  const showDetail = () => {
-    navigation(`${application._id}`);
-  };
   return (
     <div className="application">
       <h2>
@@ -22,7 +19,12 @@ export default function ApplicationGeneral(props) {
         {' in '}
         {application.location}
       </p>
-      <button type="button" className="btn-details" onClick={() => showDetail()}>Details</button>
+      <button type="button" className="btn-details" onClick={() => setUpdating(true)}>Update</button>
+      <ApplicationUpdateForm
+        application={application}
+        updating={updating}
+        setUpdating={setUpdating}
+      />
     </div>
   );
 }
