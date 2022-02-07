@@ -35,6 +35,11 @@ nav > .btn-action {
   font-size: 18px;
   padding: 1em;
   border-radius: 1em;
+  background-color: white;
+}
+
+nav > .btn-action:hover {
+  cursor: pointer;
 }
 
 a.active::after {

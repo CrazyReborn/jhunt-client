@@ -27,7 +27,7 @@ export default function Applications() {
         setErrors(['There was an error while fetching data: ', err]);
         setLoaded(true);
       });
-  }, [errors]);
+  }, [applications]);
 
   return (
     loaded
