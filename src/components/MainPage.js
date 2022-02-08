@@ -4,8 +4,6 @@ import Navbar from './Navbar';
 import Applications from './Applications/Applications';
 import Profile from './Profile';
 import '../styles/MainPage.css';
-import ApplicationDetailed from './Applications/ApplicationDetailed';
-import NewApplicationForm from './Applications/NewApplicationForm';
 
 export default function MainPage() {
   const [rerender, setRerender] = useState(false);
@@ -15,8 +13,6 @@ export default function MainPage() {
       <div className="outlet">
         <Routes>
           <Route path="applications" element={<Applications rerender={rerender} setRerender={setRerender} />} />
-          <Route path="applications/:id" element={<ApplicationDetailed />} />
-          <Route path="applications/new" element={<NewApplicationForm />} />
           <Route path="/profile/*" element={<Profile />} />
         </Routes>
       </div>
