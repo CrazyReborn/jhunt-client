@@ -6,7 +6,8 @@ import { ReactComponent as LogoutLogo } from '../images/logout_black_24dp.svg';
 import '../styles/Navbar.css';
 import NewApplicationForm from './Applications/NewApplicationForm';
 
-export default function Navbar() {
+// eslint-disable-next-line react/prop-types
+export default function Navbar({ rerender, setRerender }) {
   const [creatingNew, setCreatingNew] = useState(false);
   return (
     <>
@@ -33,7 +34,12 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
-      <NewApplicationForm creatingNew={creatingNew} setCreatingNew={setCreatingNew} />
+      <NewApplicationForm
+        creatingNew={creatingNew}
+        setCreatingNew={setCreatingNew}
+        rerender={rerender}
+        setRerender={setRerender}
+      />
     </>
   );
 }

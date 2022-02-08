@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import { ReactComponent as CloseLogo } from '../../images/close_black_24dp.svg';
 import '../../styles/newApplicationForm.css';
 
-export default function NewApplicationForm({ creatingNew, setCreatingNew }) {
+export default function NewApplicationForm({
+  creatingNew, setCreatingNew, rerender, setRerender,
+}) {
   const [companyName, setCompanyName] = useState('');
   const [position, setPosition] = useState('');
   const [salary, setSalary] = useState('');
@@ -37,7 +39,10 @@ export default function NewApplicationForm({ creatingNew, setCreatingNew }) {
         console.log(json.msg, json.err);
         if (typeof json.msg === 'undefined') {
           setErrors(json.err.errors);
-        } else setCreatingNew(false);
+        } else {
+          setRerender(!rerender);
+          setCreatingNew(false);
+        }
       })
       .catch((err) => setErrors(err));
   };

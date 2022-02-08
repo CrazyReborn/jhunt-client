@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import Applications from './Applications/Applications';
@@ -6,24 +6,17 @@ import Profile from './Profile';
 import '../styles/MainPage.css';
 import ApplicationDetailed from './Applications/ApplicationDetailed';
 import NewApplicationForm from './Applications/NewApplicationForm';
-import Interviews from './Interviews/Interviews';
-import NewInterviewForm from './Interviews/NewInterviewForm';
-import InterviewDetailed from './Interviews/InterviewDetailed';
-import Offers from './Offers/Offers';
 
 export default function MainPage() {
+  const [rerender, setRerender] = useState(false);
   return (
     <div className="mainContent">
-      <Navbar />
+      <Navbar rerender={rerender} setRerender={setRerender} />
       <div className="outlet">
         <Routes>
-          <Route path="applications" element={<Applications />} />
+          <Route path="applications" element={<Applications rerender={rerender} setRerender={setRerender} />} />
           <Route path="applications/:id" element={<ApplicationDetailed />} />
           <Route path="applications/new" element={<NewApplicationForm />} />
-          <Route path="interviews" element={<Interviews />} />
-          <Route path="interviews/:id" element={<InterviewDetailed />} />
-          <Route path="interviews/new" element={<NewInterviewForm />} />
-          <Route path="offers" element={<Offers />} />
           <Route path="/profile/*" element={<Profile />} />
         </Routes>
       </div>

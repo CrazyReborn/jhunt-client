@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ApplicationUpdateForm from './ApplicationUpdateForm';
 
 export default function ApplicationGeneral(props) {
-  const { application } = props;
+  const { application, rerender, setRerender } = props;
   const [updating, setUpdating] = useState(false);
 
   return (
@@ -24,6 +24,8 @@ export default function ApplicationGeneral(props) {
         application={application}
         updating={updating}
         setUpdating={setUpdating}
+        rerender={rerender}
+        setRerender={setRerender}
       />
     </div>
   );

@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import ApplicationGeneral from './ApplicationGeneral';
 import LoadingSpinner from '../LoadingSpinner';
 import '../../styles/Applications.css';
 
-export default function Applications() {
+export default function Applications({ rerender, setRerender }) {
   const [applications, setApplications] = useState([]);
   const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -27,7 +28,7 @@ export default function Applications() {
         setErrors(['There was an error while fetching data: ', err]);
         setLoaded(true);
       });
-  }, [applications]);
+  }, [rerender]);
 
   return (
     loaded
@@ -38,6 +39,8 @@ export default function Applications() {
               <ApplicationGeneral
                 key={application._id}
                 application={application}
+                rerender={rerender}
+                setRerender={setRerender}
               />
             ))}
           </div>

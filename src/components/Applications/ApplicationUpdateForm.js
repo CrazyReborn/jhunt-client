@@ -9,6 +9,8 @@ export default function ApplicationUpdateForm({
   application,
   updating,
   setUpdating,
+  rerender,
+  setRerender,
 }) {
   const [companyName, setCompanyName] = useState(application.company_name);
   const [position, setPosition] = useState(application.position);
@@ -41,6 +43,7 @@ export default function ApplicationUpdateForm({
     }).then((res) => res.json())
       .then((json) => {
         if (typeof json.msg !== 'undefined') {
+          setRerender(!rerender);
           setUpdating(false);
         } else {
           setErrors(json.err);
