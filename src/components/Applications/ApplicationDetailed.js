@@ -30,63 +30,65 @@ export default function ApplicationDetailed() {
         }
       })
       .catch((err) => setErrors([err]));
-  }, [id]);
-  if (!updating) {
-    return (
-      loaded
-        ? (
-          <article className="detailed">
-            <h2>
-              {'Company: '}
-              {application.company_name}
-            </h2>
-            <p>
-              {'Position: '}
-              {application.position}
-            </p>
-            <p>
-              {'Salary: '}
-              {application.salary}
-              $ per month
-            </p>
-            <p>
-              {'Status: '}
-              {application.status}
-            </p>
-            <p>
-              {'Date: '}
-              {typeof application.date === 'undefined'
-                ? ''
-                : format(parseISO(application.date), 'yyyy-MM-dd')}
-            </p>
-            <p>
-              <a
-                href={application.jobLink}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Job link
-              </a>
-            </p>
-            <p>
-              {'Qualifications: '}
-              {application.qualifications_met}
-            </p>
-            <div className="application-btns">
-              <button
-                className="btn-update-delete"
-                type="button"
-                onClick={() => setUpdating(true)}
-              >
-                Update
-              </button>
-              <ApplicationDelete application={application} />
-            </div>
-          </article>
-        )
-        : <LoadingSpinner />
-    );
-  } return (
-    <ApplicationUpdateForm setUpdating={setUpdating} application={application} />
+  }, [updating]);
+
+  return (
+    loaded
+      ? (
+        <article className="detailed">
+          <h2>
+            {'Company: '}
+            {application.company_name}
+          </h2>
+          <p>
+            {'Position: '}
+            {application.position}
+          </p>
+          <p>
+            {'Salary: '}
+            {application.salary}
+            $ per month
+          </p>
+          <p>
+            {'Status: '}
+            {application.status}
+          </p>
+          <p>
+            {'Date: '}
+            {typeof application.date === 'undefined'
+              ? ''
+              : format(parseISO(application.date), 'yyyy-MM-dd')}
+          </p>
+          <p>
+            <a
+              href={application.jobLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Job link
+            </a>
+          </p>
+          <p>
+            {'Qualifications: '}
+            {application.qualifications_met}
+          </p>
+          <div className="application-btns">
+            <button
+              className="btn-update-delete"
+              type="button"
+              onClick={() => setUpdating(true)}
+            >
+              Update
+            </button>
+            <ApplicationDelete application={application} />
+          </div>
+          <ApplicationUpdateForm
+            updating={updating}
+            setUpdating={setUpdating}
+            application={application}
+          />
+        </article>
+      )
+      : <LoadingSpinner />
   );
 }

@@ -4,7 +4,7 @@ import ApplicationGeneral from './ApplicationGeneral';
 import LoadingSpinner from '../LoadingSpinner';
 import '../../styles/Applications.css';
 
-export default function Applications({ rerender, setRerender }) {
+export default function Applications({ rerender }) {
   const [applications, setApplications] = useState([]);
   const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -49,8 +49,6 @@ export default function Applications({ rerender, setRerender }) {
                   <ApplicationGeneral
                     key={application._id}
                     application={application}
-                    rerender={rerender}
-                    setRerender={setRerender}
                   />
                 ))}
               </tbody>
