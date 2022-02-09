@@ -35,14 +35,26 @@ export default function Applications({ rerender, setRerender }) {
       ? (
         <>
           <div className="applications">
-            {applications.map((application) => (
-              <ApplicationGeneral
-                key={application._id}
-                application={application}
-                rerender={rerender}
-                setRerender={setRerender}
-              />
-            ))}
+            <table className="application">
+              <thead>
+                <tr>
+                  <th>Company</th>
+                  <th>Position</th>
+                  <th>Location</th>
+                  <th>Salary</th>
+                </tr>
+              </thead>
+              <tbody>
+                {applications.map((application) => (
+                  <ApplicationGeneral
+                    key={application._id}
+                    application={application}
+                    rerender={rerender}
+                    setRerender={setRerender}
+                  />
+                ))}
+              </tbody>
+            </table>
           </div>
           {errors !== []
             ? (

@@ -57,7 +57,7 @@ export default function ApplicationUpdateForm({
     <div className="new-application-container">
       <form className="new-application" onSubmit={(e) => onSubmit(e)}>
         <div className="sub-container">
-          <h3>Add new application</h3>
+          <h3>Update application</h3>
           <CloseLogo className="new-application-close" onClick={() => setUpdating(false)} />
         </div>
         <label htmlFor="companyName">

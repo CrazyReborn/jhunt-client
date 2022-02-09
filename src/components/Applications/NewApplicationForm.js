@@ -40,6 +40,14 @@ export default function NewApplicationForm({
         if (typeof json.msg === 'undefined') {
           setErrors(json.err.errors);
         } else {
+          setCompanyName('');
+          setPosition('');
+          setSalary('');
+          setStatus('');
+          setLocation('');
+          setDate('');
+          setJobLink('');
+          setQualificationsMet('');
           setRerender(!rerender);
           setCreatingNew(false);
         }

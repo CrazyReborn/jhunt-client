@@ -7,19 +7,13 @@ export default function ApplicationGeneral(props) {
   const [updating, setUpdating] = useState(false);
 
   return (
-    <div className="application">
-      <h2>
-        {application.position}
-        {' at '}
-        {application.company_name}
-      </h2>
-      <p>
-        $
-        {application.salary}
-        {' in '}
-        {application.location}
-      </p>
-      <button type="button" className="btn-details" onClick={() => setUpdating(true)}>Update</button>
+    <>
+      <tr onClick={() => { setUpdating(true); console.log(updating); }}>
+        <td>{application.company_name}</td>
+        <td>{application.position}</td>
+        <td>{application.location}</td>
+        <td>{application.salary}</td>
+      </tr>
       <ApplicationUpdateForm
         application={application}
         updating={updating}
@@ -27,6 +21,6 @@ export default function ApplicationGeneral(props) {
         rerender={rerender}
         setRerender={setRerender}
       />
-    </div>
+    </>
   );
 }
