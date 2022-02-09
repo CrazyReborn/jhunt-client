@@ -3,9 +3,9 @@
   margin: 2em auto 2em;
   font-size: 18px;
   border-collapse: collapse;
-  -webkit-box-shadow: 1px 1px 5px 0px rgba(66, 68, 90, 1);
-  -moz-box-shadow: 1px 1px 5px 0px rgba(66, 68, 90, 1);
-  box-shadow: 1px 1px 5px 0px rgba(66, 68, 90, 1);
+  -webkit-box-shadow: -3px 12px 39px -31px rgba(66, 68, 90, 1);
+  -moz-box-shadow: -3px 12px 39px -31px rgba(66, 68, 90, 1);
+  box-shadow: -3px 12px 39px -31px rgba(66, 68, 90, 1);
 }
 
 table {

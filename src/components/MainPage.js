@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import Applications from './Applications/Applications';
 import Profile from './Profile';
+import ApplicationDetailed from './Applications/ApplicationDetailed';
 import '../styles/MainPage.css';
 
 export default function MainPage() {
@@ -13,6 +14,7 @@ export default function MainPage() {
       <div className="outlet">
         <Routes>
           <Route path="applications" element={<Applications rerender={rerender} setRerender={setRerender} />} />
+          <Route path="applications/:id" element={<ApplicationDetailed />} />
           <Route path="/profile/*" element={<Profile />} />
         </Routes>
       </div>
