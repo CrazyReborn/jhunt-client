@@ -55,13 +55,25 @@ export default function NewApplicationForm({
       .catch((err) => setErrors(err));
   };
 
+  const onClick = () => {
+    setCompanyName('');
+    setPosition('');
+    setSalary('');
+    setStatus('');
+    setLocation('');
+    setDate('');
+    setJobLink('');
+    setQualificationsMet('');
+    setCreatingNew(false);
+  };
+
   if (!creatingNew) return null;
   return ReactDOM.createPortal(
     <div className="new-application-container">
       <form className="new-application" onSubmit={(e) => onSubmit(e)}>
         <div className="sub-container">
           <h3>Add new application</h3>
-          <CloseLogo className="new-application-close" onClick={() => setCreatingNew(false)} />
+          <CloseLogo className="new-application-close" onClick={() => onClick()} />
         </div>
         <label htmlFor="companyName">
           Company Name

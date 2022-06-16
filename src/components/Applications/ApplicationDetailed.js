@@ -47,7 +47,7 @@ export default function ApplicationDetailed() {
           <p>
             {'Salary: '}
             {application.salary}
-            $ per month
+            PLN per month
           </p>
           <p>
             {'Status: '}
@@ -74,7 +74,7 @@ export default function ApplicationDetailed() {
           </p>
           <div className="application-btns">
             <button
-              className="btn-update-delete"
+              className="btn-update"
               type="button"
               onClick={() => setUpdating(true)}
             >

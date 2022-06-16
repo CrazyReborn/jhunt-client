@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import format from 'date-fns/format';
+import parseISO from 'date-fns/parseISO';
 
 export default function ApplicationGeneral(props) {
   const { application } = props;
@@ -13,8 +15,9 @@ export default function ApplicationGeneral(props) {
     <tr onClick={() => moveToDetailed()}>
       <td>{application.company_name}</td>
       <td>{application.position}</td>
-      <td>{application.location}</td>
+      <td>{application.status}</td>
       <td>{application.salary}</td>
+      <td>{format(parseISO(application.date), 'yyyy-MM-dd')}</td>
     </tr>
   );
 }

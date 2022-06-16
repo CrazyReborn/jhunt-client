@@ -40,17 +40,19 @@ export default function Applications({ rerender }) {
                 <tr>
                   <th>Company</th>
                   <th>Position</th>
-                  <th>Location</th>
+                  <th>Status</th>
                   <th>Salary</th>
+                  <th>Date</th>
                 </tr>
               </thead>
               <tbody>
-                {applications.map((application) => (
-                  <ApplicationGeneral
-                    key={application._id}
-                    application={application}
-                  />
-                ))}
+                {applications.sort((prev, next) => (new Date(next.date) - new Date(prev.date)))
+                  .map((application) => (
+                    <ApplicationGeneral
+                      key={application._id}
+                      application={application}
+                    />
+                  ))}
               </tbody>
             </table>
           </div>
