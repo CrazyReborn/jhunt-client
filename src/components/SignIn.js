@@ -29,7 +29,6 @@ export default function SignIn() {
         }
         if (errors) {
           setGotErr(true);
-          console.log(errors);
         }
       });
   };
