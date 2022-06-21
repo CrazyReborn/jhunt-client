@@ -11,10 +11,13 @@ export default function ApplicationDelete(props) {
       method: 'DELETE',
       credentials: 'include',
     })
-      .then((res) => res.json())
+      .then((res) => {
+        res.json();
+        navigate('../applications/', { replace: true });
+      })
       .then((json) => {
         if (typeof json.msg !== 'undefined') {
-          navigate('dashboard/applications');
+          navigate('../applications/', { replace: true });
         }
       });
   };
