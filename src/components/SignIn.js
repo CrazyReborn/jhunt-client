@@ -27,11 +27,7 @@ export default function SignIn() {
         } else {
           navigate('/dashboard/applications');
         }
-        if (errors) {
-          setGotErr(true);
-        } else {
-          setGotErr(false);
-        }
+        setGotErr(errors.length > 0);
       });
   };
   return (

@@ -2,12 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import ApplicationGeneral from './ApplicationGeneral';
 import LoadingSpinner from '../LoadingSpinner';
+import ErrorPopUp from './ErrorPopUp';
 import '../../styles/Applications.css';
 
 export default function Applications({ rerender }) {
   const [applications, setApplications] = useState([]);
   const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [gotErr, setGotErr] = useState(false);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_SERVER}applications`, {
@@ -18,16 +20,16 @@ export default function Applications({ rerender }) {
       .then((json) => {
         if (json.applications === undefined) {
           setErrors(json.err.errors);
-          setLoaded(true);
         } else {
           setApplications(json.applications);
-          setLoaded(true);
         }
+
+        setGotErr(errors.length > 0);
       })
       .catch((err) => {
         setErrors(['There was an error while fetching data: ', err]);
-        setLoaded(true);
-      });
+      })
+      .finally(setLoaded(true));
   }, [rerender]);
 
   return (
@@ -56,13 +58,7 @@ export default function Applications({ rerender }) {
               </tbody>
             </table>
           </div>
-          {errors !== []
-            ? (
-              <div className="errors">
-                {errors.map((err) => <p key={err.param}>{err.msg}</p>)}
-              </div>
-            )
-            : ''}
+          <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />
         </>
       )
       : <LoadingSpinner />
