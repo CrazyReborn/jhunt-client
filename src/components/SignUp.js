@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import ErrorPopUp from './Applications/ErrorPopUp';
 import '../styles/SignUp.css';
 
 export default function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [gotErr, setGotErr] = useState(false);
   const [errors, setError] = useState([]);
 
   const navigate = useNavigate();
@@ -24,6 +26,12 @@ export default function SignUp() {
           setError(json.err.errors);
         } else {
           navigate('/');
+        }
+
+        if (errors) {
+          setGotErr(true);
+        } else {
+          setGotErr(false);
         }
       });
   };
@@ -49,13 +57,7 @@ export default function SignUp() {
         </p>
         <input className="btn-action" type="submit" value="Sign Up" />
       </form>
-      {errors !== []
-        ? (
-          <div className="errors">
-            {errors.map((err) => <p key={err.param}>{err.msg}</p>)}
-          </div>
-        )
-        : ''}
+      <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />
     </div>
   );
 }

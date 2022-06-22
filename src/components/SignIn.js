@@ -29,6 +29,8 @@ export default function SignIn() {
         }
         if (errors) {
           setGotErr(true);
+        } else {
+          setGotErr(false);
         }
       });
   };
