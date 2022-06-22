@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { format } from 'date-fns';
 import parseISO from 'date-fns/parseISO';
 import { ReactComponent as CloseLogo } from '../../images/close_black_24dp.svg';
+import ErrorPopUp from './ErrorPopUp';
 
 export default function ApplicationUpdateForm({
   application,
@@ -19,6 +20,7 @@ export default function ApplicationUpdateForm({
   const [jobLink, setJobLink] = useState(application.jobLink);
   const [qualificationsMet, setQualificationsMet] = useState(application.qualifications_met);
   const [errors, setErrors] = useState([]);
+  const [gotErr, setGotErr] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -43,8 +45,9 @@ export default function ApplicationUpdateForm({
         if (typeof json.msg !== 'undefined') {
           setUpdating(false);
         } else {
-          setErrors(json.err);
+          setErrors(json.err.errors);
         }
+        setGotErr(errors.length > 0);
       })
       .catch((err) => setErrors(err));
   };
@@ -105,13 +108,7 @@ export default function ApplicationUpdateForm({
           </select>
         </label>
         <input type="submit" value="Submit" />
-        {errors.length > 0
-          ? (
-            <div className="errors">
-              {errors.map((err) => <p key={err.param}>{err.msg}</p>)}
-            </div>
-          )
-          : ''}
+        <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />
       </form>
     </div>,
     document.getElementById('portal'),

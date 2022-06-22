@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { ReactComponent as CloseLogo } from '../../images/close_black_24dp.svg';
+import ErrorPopUp from './ErrorPopUp';
 import '../../styles/newApplicationForm.css';
 
 export default function NewApplicationForm({
@@ -15,6 +16,7 @@ export default function NewApplicationForm({
   const [jobLink, setJobLink] = useState('');
   const [qualificationsMet, setQualificationsMet] = useState('');
   const [errors, setErrors] = useState([]);
+  const [gotErr, setGotErr] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -51,6 +53,7 @@ export default function NewApplicationForm({
           setRerender(!rerender);
           setCreatingNew(false);
         }
+        setGotErr(errors.length > 0);
       })
       .catch((err) => setErrors(err));
   };
@@ -131,13 +134,7 @@ export default function NewApplicationForm({
           </select>
         </label>
         <input type="submit" value="Submit" />
-        {errors.length > 0
-          ? (
-            <div className="errors">
-              {errors.map((err) => <p key={err.param}>{err.msg}</p>)}
-            </div>
-          )
-          : ''}
+        <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />
       </form>
     </div>,
     document.getElementById('portal'),
