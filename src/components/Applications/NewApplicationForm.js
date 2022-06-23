@@ -38,7 +38,6 @@ export default function NewApplicationForm({
       }),
     }).then((res) => res.json())
       .then((json) => {
-        console.log(json.msg, json.err);
         if (typeof json.msg === 'undefined') {
           setErrors(json.err.errors);
         } else {

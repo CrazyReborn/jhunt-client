@@ -5,14 +5,16 @@ import parseISO from 'date-fns/parseISO';
 import LoadingSpinner from '../LoadingSpinner';
 import ApplicationDelete from './ApplicationDelete';
 import ApplicationUpdateForm from './ApplicationUpdateForm';
+import ErrorPopUp from './ErrorPopUp';
 import '../../styles/ApplicationDetailed.css';
 
 export default function ApplicationDetailed() {
   const { id } = useParams();
   const [application, setApplication] = useState('');
-  const [, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [updating, setUpdating] = useState(false);
+  const [gotErr, setGotErr] = useState(false);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_SERVER}applications/${id}`, {
@@ -29,7 +31,14 @@ export default function ApplicationDetailed() {
           setLoaded(true);
         }
       })
-      .catch((err) => setErrors([err]));
+      .catch((err) => setErrors([err]))
+      .finally(() => {
+        if (errors.length > 0) {
+          setGotErr(true);
+        } else {
+          setGotErr(false);
+        }
+      });
   }, [updating]);
 
   return (
@@ -87,6 +96,7 @@ export default function ApplicationDetailed() {
             setUpdating={setUpdating}
             application={application}
           />
+          <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />
         </article>
       )
       : <LoadingSpinner />
