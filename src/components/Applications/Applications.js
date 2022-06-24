@@ -10,6 +10,17 @@ export default function Applications({ rerender }) {
   const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [gotErr, setGotErr] = useState(false);
+  const [salaryUsrAvg, setSalaryUsrAvg] = useState(0);
+  const [salaryAllAvg, setSalaryAllAvg] = useState(0);
+
+  function calculateAvgSalary() {
+    const count = applications.length;
+    let sum = 0;
+    applications.forEach((e) => {
+      sum += e.salary;
+    });
+    setSalaryUsrAvg(sum / count);
+  }
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_SERVER}applications`, {
@@ -23,14 +34,20 @@ export default function Applications({ rerender }) {
         } else {
           setApplications(json.applications);
         }
-
+        setSalaryAllAvg(json.averagesAll[0].avg);
         setGotErr(errors.length > 0);
       })
       .catch((err) => {
         setErrors(['There was an error while fetching data: ', err]);
       })
-      .finally(setLoaded(true));
+      .finally(() => {
+        setLoaded(true);
+      });
   }, [rerender]);
+
+  useEffect(() => {
+    calculateAvgSalary();
+  }, [loaded]);
 
   return (
     loaded
@@ -53,6 +70,8 @@ export default function Applications({ rerender }) {
                     <ApplicationGeneral
                       key={application._id}
                       application={application}
+                      salaryUsrAvg={salaryUsrAvg}
+                      salaryAllAvg={salaryAllAvg}
                     />
                   ))}
               </tbody>

@@ -6,9 +6,11 @@ import parseISO from 'date-fns/parseISO';
 
 export default function ApplicationGeneral(props) {
   const { application } = props;
+  const { salaryUsrAvg } = props;
+  const { salaryAllAvg } = props;
   const navigate = useNavigate();
   const moveToDetailed = () => {
-    navigate(application._id);
+    navigate(application._id, { state: { salaryUsrAvg, salaryAllAvg } });
   };
 
   return (
