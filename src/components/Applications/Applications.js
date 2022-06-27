@@ -61,7 +61,7 @@ export default function Applications({ rerender }) {
                   <th>Position</th>
                   <th>Status</th>
                   <th>Salary</th>
-                  <th>Date</th>
+                  <th className="table-head-date">Date</th>
                 </tr>
               </thead>
               <tbody>

@@ -19,7 +19,7 @@ export default function ApplicationGeneral(props) {
       <td>{application.position}</td>
       <td>{application.status}</td>
       <td>{application.salary}</td>
-      <td>{format(parseISO(application.date), 'yyyy-MM-dd')}</td>
+      <td className="table-body-date">{format(parseISO(application.date), 'yyyy-MM-dd')}</td>
     </tr>
   );
 }
