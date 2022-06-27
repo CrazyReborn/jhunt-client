@@ -14,3 +14,16 @@
 .outlet > .btn-action {
   margin: 2rem auto 1rem;
 }
+
+@media screen and (max-width: 1210px) {
+  .mainContent {
+    flex-direction: column;
+    padding: 0.5em;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .mainContent {
+    padding: 0;
+  }
+}
