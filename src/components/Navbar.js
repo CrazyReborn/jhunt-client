@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as ApplicationsLogo } from '../images/description_black_24dp.svg';
-import { ReactComponent as ProfileLogo } from '../images/manage_accounts_black_24dp.svg';
 import { ReactComponent as LogoutLogo } from '../images/logout_black_24dp.svg';
 import { ReactComponent as MenuLogo } from '../images/bars-solid.svg';
 import { ReactComponent as CloseLogo } from '../images/close_black_24dp.svg';
@@ -24,12 +23,6 @@ export default function Navbar({ rerender, setRerender }) {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/profile">
-              <ProfileLogo fill="white" />
-              Profille
-            </NavLink>
-          </li>
-          <li>
             <NavLink to="/logout">
               <LogoutLogo fill="white" />
               Log Out
@@ -49,12 +42,6 @@ export default function Navbar({ rerender, setRerender }) {
                   <NavLink onClick={() => setOpenMenu(false)} to="/dashboard/applications">
                     <ApplicationsLogo fill="blue" />
                     Applications
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink onClick={() => setOpenMenu(false)} to="/dashboard/profile">
-                    <ProfileLogo fill="blue" />
-                    Profille
                   </NavLink>
                 </li>
                 <li>
