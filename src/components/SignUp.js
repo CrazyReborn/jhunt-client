@@ -41,15 +41,15 @@ export default function SignUp() {
       <form onSubmit={(e) => onSubmit(e)}>
         <label htmlFor="username">
           {'Username: '}
-          <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input autoComplete="off" type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
         <label htmlFor="password">
           {'Password: '}
-          <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input autoComplete="off" type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
         <label htmlFor="confirm-password">
           {'Confirm Password: '}
-          <input type="password" name="confirm-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+          <input autoComplete="off" type="password" name="confirm-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
         </label>
         <p>
           Already have an account?

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ErrorPopUp from './Applications/ErrorPopUp';
 import '../styles/SignUp.css';
@@ -27,19 +27,23 @@ export default function SignIn() {
         } else {
           navigate('/dashboard/applications');
         }
-        setGotErr(errors.length > 0);
       });
   };
+
+  useEffect(() => {
+    setGotErr(errors.length > 0);
+  }, [errors]);
+
   return (
     <div className="sign-up">
       <form onSubmit={(e) => onSubmit(e)}>
         <label htmlFor="username">
           {'Username: '}
-          <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input autoComplete="off" type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
         <label htmlFor="password">
           {'Password: '}
-          <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input autoComplete="off" type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
         <p>
           {'Don\'t have an account yet? '}
@@ -47,7 +51,7 @@ export default function SignIn() {
         </p>
         <input className="btn-action" type="submit" value="Sign In" />
       </form>
-      <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />
+      {gotErr && <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />}
     </div>
   );
 }
