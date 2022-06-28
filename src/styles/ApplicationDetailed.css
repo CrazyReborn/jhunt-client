@@ -1,6 +1,7 @@
 .detailed {
   align-self: flex-start;
-  margin: 5%;
+  margin: 5% 0 5% 5%;
+  width: 50%;
 }
 
 .detailed > h2 {
@@ -45,4 +46,35 @@
 
 .btn-update:hover, .btn-delete:hover {
   cursor: pointer;
+}
+
+.container-detailed {
+  display: flex;
+}
+
+#canvasjs-react-chart-container-0 {
+  width: 50%;
+}
+
+@media screen and (max-width: 1442px) {
+  .container-detailed {
+    flex-direction: column;
+  }
+
+  #canvasjs-react-chart-container-0 {
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  .detailed {
+    margin: 1%;
+    width: auto;
+    align-self: center;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .detailed {
+    font-size: 0.8em;
+  }
 }

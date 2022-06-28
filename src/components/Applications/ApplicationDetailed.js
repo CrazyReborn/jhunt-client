@@ -59,17 +59,17 @@ export default function ApplicationDetailed() {
     }, {
       type: 'bar',
       dataPoints: [
-        { y: Math.round(salaryAllAvg), label: 'Average Between All Users Applications' },
-        { y: Math.round(salaryUsrAvg), label: 'Average Between All Of Your Applications' },
+        { y: Math.round(salaryAllAvg), label: 'All Users Applications' },
+        { y: Math.round(salaryUsrAvg), label: 'All Of Your Applications' },
       ],
     },
-],
+    ],
   };
 
   return (
     loaded
       ? (
-        <div>
+        <div className="container-detailed">
           <article className="detailed">
             <h2>
               {'Company: '}
@@ -124,7 +124,7 @@ export default function ApplicationDetailed() {
             />
             <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />
           </article>
-          <CanvasJsChart options={chartOptions} />
+          <CanvasJsChart className="chart" options={chartOptions} />
         </div>
       )
       : <LoadingSpinner />

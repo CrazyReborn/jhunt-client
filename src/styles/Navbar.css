@@ -143,7 +143,7 @@ a.active::after {
     position: absolute;
     height: 100vh;
     width: 65%;
-    padding: 10px;
+    padding: 10px 10px 0 10px;
     z-index: 100;
     background-color: white;
     border-right: blue 1px solid;
@@ -157,6 +157,7 @@ a.active::after {
     font-size: 32px;
     list-style-type: none;
     padding: 0;
+    margin: 0;
   }
 
   .mobile-nav.opened > ul > li > a {
