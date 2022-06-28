@@ -8,6 +8,11 @@
   box-shadow: -3px 12px 39px -31px rgba(66, 68, 90, 1);
 }
 
+.no-yet {
+  display: flex;
+  justify-content: center;
+}
+
 table {
   border-spacing: 0 20px;
 }
