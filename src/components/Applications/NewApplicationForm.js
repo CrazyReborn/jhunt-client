@@ -80,17 +80,17 @@ export default function NewApplicationForm({
         <label htmlFor="companyName">
           Company Name
           <br />
-          <input type="text" id="companyName" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
+          <input autoComplete="off" type="text" id="companyName" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
         </label>
         <label htmlFor="position">
           Position
           <br />
-          <input type="text" id="position" value={position} onChange={(e) => setPosition(e.target.value)} />
+          <input autoComplete="off" type="text" id="position" value={position} onChange={(e) => setPosition(e.target.value)} />
         </label>
         <label htmlFor="salary">
           Salary
           <br />
-          <input type="number" id="salary" value={salary} onChange={(e) => setSalary(e.target.value)} />
+          <input autoComplete="off" type="number" id="salary" value={salary} onChange={(e) => setSalary(e.target.value)} />
         </label>
         <label htmlFor="status">
           Status
@@ -108,17 +108,17 @@ export default function NewApplicationForm({
         <label htmlFor="date">
           Select date
           <br />
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+          <input autoComplete="off" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
         </label>
         <label htmlFor="jobLink">
           Link to the offer:
           <br />
-          <input type="text" id="jobLink" value={jobLink} onChange={(e) => setJobLink(e.target.value)} />
+          <input autoComplete="off" type="text" id="jobLink" value={jobLink} onChange={(e) => setJobLink(e.target.value)} />
         </label>
         <label htmlFor="location">
           Location
           <br />
-          <input type="text" id="location" value={location} onChange={(e) => setLocation(e.target.value)} />
+          <input autoComplete="off" type="text" id="location" value={location} onChange={(e) => setLocation(e.target.value)} />
         </label>
         <label htmlFor="qualificationsMet">
           Qualifications:
