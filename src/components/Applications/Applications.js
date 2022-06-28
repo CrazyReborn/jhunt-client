@@ -49,7 +49,7 @@ export default function Applications({ rerender }) {
     calculateAvgSalary();
   }, [loaded]);
 
-  if (loaded && applications.length > 0) {
+  if (loaded && applications.length === 0) {
     return (
       <div className="no-yet">
         <p>No applications have been added yet</p>
@@ -85,7 +85,7 @@ export default function Applications({ rerender }) {
               </tbody>
             </table>
           </div>
-          <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />
+          {gotErr && <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />}
         </>
       )
       : <LoadingSpinner />

@@ -31,7 +31,7 @@ export default function ApplicationDelete(props) {
   return (
     <form onSubmit={(e) => onSubmit(e)}>
       <input className="btn-delete" type="submit" value="Delete" />
-      <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />
+      {gotErr && <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />}
     </form>
   );
 }
