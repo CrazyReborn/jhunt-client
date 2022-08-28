@@ -1,4 +1,8 @@
-﻿/*
+/* eslint-disable linebreak-style */
+/* tslint:disable */
+/*eslint-disable*/
+/*jshint ignore:start*/
+/*
 CanvasJS React Charts - https://canvasjs.com/
 Copyright 2022 fenopix
 
