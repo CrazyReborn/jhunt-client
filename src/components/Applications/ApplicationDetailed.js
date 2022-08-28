@@ -122,7 +122,7 @@ export default function ApplicationDetailed() {
               setUpdating={setUpdating}
               application={application}
             />
-            {gotErr && <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />}
+            <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />
           </article>
           <CanvasJsChart className="chart" options={chartOptions} />
         </div>

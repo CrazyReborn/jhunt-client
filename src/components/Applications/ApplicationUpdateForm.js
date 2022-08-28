@@ -108,7 +108,7 @@ export default function ApplicationUpdateForm({
           </select>
         </label>
         <input type="submit" value="Submit" />
-        {gotErr && <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />}
+        <ErrorPopUp errors={errors} gotErr={gotErr} setGotErr={setGotErr} />
       </form>
     </div>,
     document.getElementById('portal'),
